@@ -3,8 +3,9 @@ package br.com.jonathanzanella.myshopping.models;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
-import org.joda.time.DateTime;
+import java.util.Date;
 
 import br.com.jonathanzanella.myshopping.database.MyDatabase;
 import lombok.Getter;
@@ -15,13 +16,13 @@ import lombok.Setter;
  * Copyright (c) 2015. All rights reserved.
  */
 @Table(databaseName = MyDatabase.NAME)
-public class Shop {
+public class Shop extends BaseModel {
 	@Column @PrimaryKey(autoincrement = true)
-	private long id;
+	long id;
 
 	@Column @Getter @Setter
-	private DateTime date;
+	Date date;
 
 	@Column @Getter @Setter
-	private String place;
+	String place;
 }

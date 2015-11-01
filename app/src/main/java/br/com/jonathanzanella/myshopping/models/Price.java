@@ -3,6 +3,7 @@ package br.com.jonathanzanella.myshopping.models;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import br.com.jonathanzanella.myshopping.database.MyDatabase;
 import lombok.Getter;
@@ -13,16 +14,16 @@ import lombok.Setter;
  * Copyright (c) 2015. All rights reserved.
  */
 @Table(databaseName = MyDatabase.NAME)
-public class Price {
+public class Price extends BaseModel {
 	@Column @PrimaryKey(autoincrement = true)
-	private long id;
+	long id;
 
 	@Column @Getter @Setter
-	private long value;
+	long value;
 
 	@Column
-	private long productId;
+	long productId;
 
 	@Column
-	private long shopId;
+	long shopId;
 }
