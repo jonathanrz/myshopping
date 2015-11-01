@@ -5,8 +5,6 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
-import java.util.Date;
-
 import br.com.jonathanzanella.myshopping.database.MyDatabase;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,13 +14,15 @@ import lombok.Setter;
  * Copyright (c) 2015. All rights reserved.
  */
 @Table(databaseName = MyDatabase.NAME)
-public class Shop extends BaseModel {
+public class PurchaseItems extends BaseModel {
 	@Column @PrimaryKey(autoincrement = true)
 	long id;
 
-	@Column @Getter @Setter
-	Date date;
+	@Column
+	long purchaseId;
+	@Column
+	long productId;
 
 	@Column @Getter @Setter
-	String place;
+	long amount;
 }

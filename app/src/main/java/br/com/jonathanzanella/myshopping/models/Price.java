@@ -25,5 +25,5 @@ public class Price extends BaseModel {
 	long productId;
 
 	@Column
-	long shopId;
+	long purchaseId;
 }
