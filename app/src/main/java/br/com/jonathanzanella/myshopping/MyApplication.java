@@ -13,5 +13,6 @@ public class MyApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		FlowManager.init(this);
+		JodaTimeAndroid.init(this);
 	}
 }
