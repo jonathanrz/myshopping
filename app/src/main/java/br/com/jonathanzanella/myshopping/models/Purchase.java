@@ -3,9 +3,12 @@ package br.com.jonathanzanella.myshopping.models;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.sql.language.From;
+import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import java.util.Date;
+import java.util.List;
 
 import br.com.jonathanzanella.myshopping.database.MyDatabase;
 import lombok.Getter;
@@ -25,4 +28,12 @@ public class Purchase extends BaseModel {
 
 	@Column @Getter @Setter
 	String place;
+
+	public static List<Purchase> all() {
+		return initQuery().queryList();
+	}
+
+	private static From<Purchase> initQuery() {
+		return new Select().from(Purchase.class);
+	}
 }
