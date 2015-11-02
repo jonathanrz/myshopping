@@ -23,17 +23,22 @@ android {
 dependencies {
 	compile fileTree(dir: 'libs', include: ['*.jar'])
 	testCompile 'junit:junit:4.12'
-	compile 'com.android.support:appcompat-v7:23.1.0'
-	compile 'net.danlew:android.joda:2.9.0'
-	compile 'com.android.support:design:23.1.0'
-	compile 'com.jakewharton:butterknife:7.0.1'
+
+	//Support Library
+	def supportLibrary = '23.1.0'
+	compile "com.android.support:appcompat-v7:${supportLibrary}"
+	compile "com.android.support:design:${supportLibrary}"
 
 	//DBFlow
-	apt 'com.raizlabs.android:DBFlow-Compiler:2.2.1'
-	compile "com.raizlabs.android:DBFlow-Core:2.2.1"
-	compile "com.raizlabs.android:DBFlow:2.2.1"
+	def dbFlow = '2.2.1'
+	apt "com.raizlabs.android:DBFlow-Compiler:${dbFlow}"
+	compile "com.raizlabs.android:DBFlow-Core:${dbFlow}"
+	compile "com.raizlabs.android:DBFlow:${dbFlow}"
 
 	//Lombok
-	provided "org.projectlombok:lombok:1.12.6"
-	apt "org.projectlombok:lombok:1.12.6"
+	def lombok = '1.12.6'
+	provided "org.projectlombok:lombok:${lombok}"
+	apt "org.projectlombok:lombok:${lombok}"
+
+	compile "com.jakewharton:butterknife:7.0.1"
 }
