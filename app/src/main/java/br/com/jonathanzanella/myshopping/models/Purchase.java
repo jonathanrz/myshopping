@@ -3,6 +3,7 @@ package br.com.jonathanzanella.myshopping.models;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.sql.builder.Condition;
 import com.raizlabs.android.dbflow.sql.language.From;
 import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.BaseModel;
@@ -20,7 +21,7 @@ import lombok.Setter;
  */
 @Table(databaseName = MyDatabase.NAME)
 public class Purchase extends BaseModel {
-	@Column @PrimaryKey(autoincrement = true)
+	@Column @PrimaryKey(autoincrement = true) @Getter
 	long id;
 
 	@Column @Getter @Setter
@@ -35,5 +36,9 @@ public class Purchase extends BaseModel {
 
 	private static From<Purchase> initQuery() {
 		return new Select().from(Purchase.class);
+	}
+
+	public static Purchase find(long id) {
+		return initQuery().where(Condition.column(Purchase$Table.ID).eq(id)).querySingle();
 	}
 }
