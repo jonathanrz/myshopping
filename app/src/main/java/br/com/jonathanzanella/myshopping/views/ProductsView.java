@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
@@ -48,7 +48,7 @@ public class ProductsView extends BaseView {
 		adapter.loadData();
 
 		products.setAdapter(adapter);
-		products.setLayoutManager(new LinearLayoutManager(getContext()));
+		products.setLayoutManager(new GridLayoutManager(getContext(), 2));
 		products.setItemAnimator(new DefaultItemAnimator());
 	}
 

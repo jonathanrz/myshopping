@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/min_spacing"
-    android:layout_marginBottom="@dimen/min_spacing">
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	app:cardCornerRadius="4dp"
+	android:layout_margin="@dimen/default_spacing">
 
-	<TextView
-        android:id="@+id/row_products_name_stt"
+	<TableLayout
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="@string/name"
-        android:layout_marginLeft="@dimen/default_spacing"
-        android:layout_marginStart="@dimen/default_spacing"
-        android:layout_marginRight="@dimen/min_spacing"
-        android:layout_marginEnd="@dimen/min_spacing"/>
+		android:layout_margin="@dimen/min_spacing">
 
-    <TextView
-        android:id="@+id/row_products_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/default_spacing"
-        android:layout_marginEnd="@dimen/default_spacing"/>
+		<TableRow
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stars"
-        android:layout_marginRight="@dimen/min_spacing"
-        android:layout_marginEnd="@dimen/min_spacing"/>
+			<TextView
+				android:id="@+id/row_products_name_stt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/name"
+				android:layout_marginRight="@dimen/min_spacing"
+				android:layout_marginEnd="@dimen/min_spacing"/>
 
-    <TextView
-        android:id="@+id/row_products_stars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/default_spacing"
-        android:layout_marginEnd="@dimen/default_spacing"/>
+			<TextView
+				android:id="@+id/row_products_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/colorPrimary"/>
 
-</LinearLayout>
+		</TableRow>
+
+		<TableRow
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content">
+
+			<TextView
+	            android:id="@+id/row_products_stars_stt"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/stars"
+				android:layout_marginRight="@dimen/min_spacing"
+				android:layout_marginEnd="@dimen/min_spacing"/>
+
+			<TextView
+				android:id="@+id/row_products_stars"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/colorPrimary"/>
+
+		</TableRow>
+
+	</TableLayout>
+</android.support.v7.widget.CardView>
