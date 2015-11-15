@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 
 /**
  * Created by jonathan on 08/11/15.
- * Copyright (c) 2015 Sparta Labs. All rights reserved.
+ * Copyright (c) 2015. All rights reserved.
  */
 public abstract class BaseView extends FrameLayout {
 	public BaseView(Context context) {

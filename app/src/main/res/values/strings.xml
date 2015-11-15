@@ -9,6 +9,8 @@
 	<string name="stars">Estrelas</string>
 	<string name="shopping">Compras</string>
 	<string name="products">Produtos</string>
+	<string name="no_product">Sem produto informado</string>
 	<string name="navigation_drawer_open">Drawer Open</string>
 	<string name="navigation_drawer_close">Drawer Close</string>
+	<string name="amount">Valor</string>
 </resources>

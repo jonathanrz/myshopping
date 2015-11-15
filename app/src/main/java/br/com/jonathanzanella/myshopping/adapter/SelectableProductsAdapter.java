@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import br.com.jonathanzanella.myshopping.R;
-import br.com.jonathanzanella.myshopping.models.Place;
+import br.com.jonathanzanella.myshopping.models.Product;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -14,13 +14,13 @@ import butterknife.ButterKnife;
  * Created by jonathan on 01/11/15.
  * Copyright (c) 2015. All rights reserved.
  */
-public class SelectablePlacesAdapter extends PlacesAdapter {
+public class SelectableProductsAdapter extends ProductsAdapter {
 	private int selectedPosition = -1;
 
-	public static class ViewHolder extends PlacesAdapter.ViewHolder implements View.OnClickListener {
-		SelectablePlacesAdapter adapter;
+	public static class ViewHolder extends ProductsAdapter.ViewHolder implements View.OnClickListener {
+		SelectableProductsAdapter adapter;
 
-		@Bind(R.id.row_place_name_stt)
+		@Bind(R.id.row_products_name_stt)
 		TextView nameStt;
 
 		public ViewHolder(View itemView) {
@@ -43,22 +43,22 @@ public class SelectablePlacesAdapter extends PlacesAdapter {
 	}
 
 	@Override
-	public PlacesAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+	public ProductsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		return new ViewHolder(super.onCreateViewHolder(parent, viewType).itemView);
 	}
 
 	@Override
-	public void onBindViewHolder(PlacesAdapter.ViewHolder holder, int position) {
+	public void onBindViewHolder(ProductsAdapter.ViewHolder holder, int position) {
 		ViewHolder vh = (ViewHolder) holder;
 		vh.adapter = this;
 		super.onBindViewHolder(holder, position);
 		vh.makeSelected(position == selectedPosition);
 	}
 
-	public @Nullable Place getSelectedPlace() {
+	public @Nullable Product getSelectedProduct() {
 		if(selectedPosition < 0 || selectedPosition >= getItemCount())
 			return null;
 
-		return places.get(selectedPosition);
+		return products.get(selectedPosition);
 	}
 }

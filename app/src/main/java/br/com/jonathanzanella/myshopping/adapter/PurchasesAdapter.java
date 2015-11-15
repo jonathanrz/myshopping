@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by jonathan on 01/11/15.
- * Copyright (c) 2015 Sparta Labs. All rights reserved.
+ * Copyright (c) 2015. All rights reserved.
  */
 public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.ViewHolder> {
 	private List<Purchase> purchases;

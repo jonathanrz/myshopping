@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<include
+		android:id="@+id/toolbar"
+		layout="@layout/toolbar"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:layout_margin="@dimen/default_spacing">
+
+		<android.support.design.widget.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/default_spacing">
+
+			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/act_edit_purchase_item_amount"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/amount"
+				android:inputType="number"/>
+
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.v7.widget.RecyclerView
+			android:id="@+id/act_edit_purchase_item_product"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"/>
+	</LinearLayout>
+
+</LinearLayout>
