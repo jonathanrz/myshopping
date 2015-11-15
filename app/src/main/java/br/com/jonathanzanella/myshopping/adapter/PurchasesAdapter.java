@@ -1,5 +1,6 @@
 package br.com.jonathanzanella.myshopping.adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 import br.com.jonathanzanella.myshopping.R;
+import br.com.jonathanzanella.myshopping.activities.DetailPurchaseActivity;
 import br.com.jonathanzanella.myshopping.models.Place;
 import br.com.jonathanzanella.myshopping.models.Purchase;
 import butterknife.Bind;
@@ -37,13 +39,22 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.View
 			ButterKnife.bind(this, itemView);
 		}
 
-		public void setData(Purchase purchase) {
+		public void setData(final Purchase purchase) {
 			date.setText(sdf.format(purchase.getDate()));
 			Place p = purchase.getPlace();
 			if(p != null)
 				place.setText(p.getName());
 			else
 				place.setText(R.string.no_places);
+
+			itemView.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent i = new Intent(v.getContext(), DetailPurchaseActivity.class);
+					i.putExtra(DetailPurchaseActivity.KEY_PURCHASE_ID, purchase.getId());
+					v.getContext().startActivity(i);
+				}
+			});
 		}
 	}
 
