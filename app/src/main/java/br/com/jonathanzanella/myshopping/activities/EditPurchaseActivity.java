@@ -3,10 +3,10 @@ package br.com.jonathanzanella.myshopping.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -15,6 +15,8 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import br.com.jonathanzanella.myshopping.R;
+import br.com.jonathanzanella.myshopping.adapter.SelectablePlacesAdapter;
+import br.com.jonathanzanella.myshopping.models.Place;
 import br.com.jonathanzanella.myshopping.models.Purchase;
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -28,11 +30,11 @@ public class EditPurchaseActivity extends BaseActivity implements DatePickerDial
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 	@Bind(R.id.act_edit_purchase_date)
 	EditText editDate;
-	@Bind(R.id.act_edit_purchase_place)
-	AutoCompleteTextView editPlace;
+	@Bind(R.id.act_edit_purchase_places_list)
+	RecyclerView listPlaces;
 
 	private Calendar selectedDate;
-	private ArrayAdapter<String> adapter;
+	private SelectablePlacesAdapter placesAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,10 @@ public class EditPurchaseActivity extends BaseActivity implements DatePickerDial
 		selectedDate = Calendar.getInstance();
 		onDateUpdated();
 
-		adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-		adapter.add("Angeloni");
-		adapter.add("Giassi");
-
-		editPlace.setAdapter(adapter);
+		placesAdapter = new SelectablePlacesAdapter();
+		placesAdapter.loadData();
+		listPlaces.setLayoutManager(new LinearLayoutManager(this));
+		listPlaces.setAdapter(placesAdapter);
 	}
 
 	@Override
@@ -92,7 +93,9 @@ public class EditPurchaseActivity extends BaseActivity implements DatePickerDial
 	private void save() {
 		Purchase purchase = new Purchase();
 		purchase.setDate(selectedDate.getTime());
-		purchase.setPlace(editPlace.getText().toString());
+		Place p = placesAdapter.getSelectedPlace();
+		if(p != null)
+			purchase.setPlaceId(p.getId());
 		purchase.save();
 
 		Intent i = new Intent();

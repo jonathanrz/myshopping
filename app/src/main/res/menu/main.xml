@@ -10,5 +10,10 @@
 			android:id="@+id/menu_products"
 			android:checked="false"
 			android:title="@string/products" />
+
+		<item
+			android:id="@+id/menu_places"
+			android:checked="false"
+			android:title="@string/places" />
 	</group>
 </menu>

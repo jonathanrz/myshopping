@@ -7,13 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 import br.com.jonathanzanella.myshopping.R;
 import br.com.jonathanzanella.myshopping.models.Place;
-import br.com.jonathanzanella.myshopping.models.Purchase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -21,15 +18,12 @@ import butterknife.ButterKnife;
  * Created by jonathan on 01/11/15.
  * Copyright (c) 2015 Sparta Labs. All rights reserved.
  */
-public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.ViewHolder> {
-	private List<Purchase> purchases;
+public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder> {
+	protected List<Place> places;
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
-		private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-		@Bind(R.id.row_purchase_date)
-		TextView date;
-		@Bind(R.id.row_purchase_place)
-		TextView place;
+		@Bind(R.id.row_place_name)
+		TextView name;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -37,38 +31,33 @@ public class PurchasesAdapter extends RecyclerView.Adapter<PurchasesAdapter.View
 			ButterKnife.bind(this, itemView);
 		}
 
-		public void setData(Purchase purchase) {
-			date.setText(sdf.format(purchase.getDate()));
-			Place p = purchase.getPlace();
-			if(p != null)
-				place.setText(p.getName());
-			else
-				place.setText(R.string.no_places);
+		public void setData(Place place) {
+			name.setText(place.getName());
 		}
 	}
 
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_purchase, parent, false);
+		View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_place, parent, false);
 		return new ViewHolder(v);
 	}
 
 	@Override
 	public void onBindViewHolder(ViewHolder holder, int position) {
-		holder.setData(purchases.get(position));
+		holder.setData(places.get(position));
 	}
 
 	@Override
 	public int getItemCount() {
-		return purchases.size();
+		return places != null ? places.size() : 0;
 	}
 
 	public void loadData() {
-		purchases = Purchase.all();
+		places = Place.all();
 	}
 
-	public void addPurchase(@NonNull Purchase purchase) {
-		purchases.add(purchase);
-		notifyItemInserted(purchases.size() - 1);
+	public void addPlace(@NonNull Place place) {
+		places.add(place);
+		notifyItemInserted(places.size() - 1);
 	}
 }

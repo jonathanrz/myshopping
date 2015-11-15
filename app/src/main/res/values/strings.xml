@@ -2,6 +2,8 @@
 	<string name="app_name">My Shopping</string>
 	<string name="date">Data</string>
 	<string name="place">Local</string>
+	<string name="places">Locais</string>
+	<string name="no_places">Sem local informado</string>
 	<string name="save">Salvar</string>
 	<string name="name">Nome</string>
 	<string name="stars">Estrelas</string>

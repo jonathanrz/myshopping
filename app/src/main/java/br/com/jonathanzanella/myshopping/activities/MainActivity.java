@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 
 import br.com.jonathanzanella.myshopping.R;
 import br.com.jonathanzanella.myshopping.views.BaseView;
+import br.com.jonathanzanella.myshopping.views.PlacesView;
 import br.com.jonathanzanella.myshopping.views.ProductsView;
 import br.com.jonathanzanella.myshopping.views.PurchasesView;
 import butterknife.Bind;
@@ -79,6 +80,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 			case R.id.menu_products:
 				addViewToContent(new ProductsView(this));
 				setTitle(R.string.products);
+				drawer.closeDrawers();
+				return true;
+			case R.id.menu_places:
+				addViewToContent(new PlacesView(this));
+				setTitle(R.string.places);
 				drawer.closeDrawers();
 				return true;
 		}
