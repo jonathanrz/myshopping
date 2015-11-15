@@ -20,6 +20,20 @@
 			android:layout_marginBottom="@dimen/default_spacing">
 
 			<android.support.v7.widget.AppCompatEditText
+				android:id="@+id/act_edit_purchase_item_quantity"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:hint="@string/quantity"
+				android:inputType="numberDecimal"/>
+
+		</android.support.design.widget.TextInputLayout>
+
+		<android.support.design.widget.TextInputLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/default_spacing">
+
+			<android.support.v7.widget.AppCompatEditText
 				android:id="@+id/act_edit_purchase_item_amount"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

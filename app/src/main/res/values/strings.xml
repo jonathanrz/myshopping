@@ -1,5 +1,6 @@
 <resources>
 	<string name="app_name">My Shopping</string>
+	<string name="add_new_item">Adicionar novo item</string>
 	<string name="date">Data</string>
 	<string name="place">Local</string>
 	<string name="places">Locais</string>
@@ -13,4 +14,6 @@
 	<string name="navigation_drawer_open">Drawer Open</string>
 	<string name="navigation_drawer_close">Drawer Close</string>
 	<string name="amount">Valor</string>
+	<string name="quantity">Quantidade</string>
+	<string name="total">Total</string>
 </resources>

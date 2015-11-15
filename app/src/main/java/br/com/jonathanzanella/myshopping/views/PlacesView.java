@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
@@ -48,7 +48,7 @@ public class PlacesView extends BaseView {
 		adapter.loadData();
 
 		places.setAdapter(adapter);
-		places.setLayoutManager(new LinearLayoutManager(getContext()));
+		places.setLayoutManager(new GridLayoutManager(getContext(), 2));
 		places.setItemAnimator(new DefaultItemAnimator());
 	}
 

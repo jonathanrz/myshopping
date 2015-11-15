@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
 import br.com.jonathanzanella.myshopping.R;
 import br.com.jonathanzanella.myshopping.models.Product;
+import br.com.jonathanzanella.myshopping.models.Purchase;
 import br.com.jonathanzanella.myshopping.models.PurchaseItem;
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,11 +26,14 @@ public class PurchasesItemAdapter extends RecyclerView.Adapter<PurchasesItemAdap
 	private List<PurchaseItem> items;
 
 	public static class ViewHolder extends RecyclerView.ViewHolder {
-		private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 		@Bind(R.id.row_purchase_item_product_name)
 		TextView productName;
+		@Bind(R.id.row_purchase_item_quantity)
+		TextView quantity;
 		@Bind(R.id.row_purchase_item_amount)
 		TextView amount;
+		@Bind(R.id.row_purchase_item_total)
+		TextView total;
 
 		public ViewHolder(View itemView) {
 			super(itemView);
@@ -39,7 +42,9 @@ public class PurchasesItemAdapter extends RecyclerView.Adapter<PurchasesItemAdap
 		}
 
 		public void setData(final PurchaseItem item) {
+			quantity.setText(NumberFormat.getNumberInstance(new Locale("pt", "BR")).format(item.getQuantity()));
 			amount.setText(NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(item.getAmount() / 100.0));
+			total.setText(NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(item.getTotal() / 100.0));
 			Product p = item.getProduct();
 			if(p != null)
 				productName.setText(p.getName());
@@ -64,8 +69,8 @@ public class PurchasesItemAdapter extends RecyclerView.Adapter<PurchasesItemAdap
 		return items.size();
 	}
 
-	public void loadData() {
-		items = PurchaseItem.all();
+	public void loadData(@NonNull Purchase purchase) {
+		items = PurchaseItem.purchaseItems(purchase.getId());
 	}
 
 	public void addItem(@NonNull PurchaseItem item) {

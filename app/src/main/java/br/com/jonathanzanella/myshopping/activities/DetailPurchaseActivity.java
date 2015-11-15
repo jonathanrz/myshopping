@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -12,6 +12,7 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -36,6 +37,8 @@ public class DetailPurchaseActivity extends BaseActivity {
 	TextView textDate;
 	@Bind(R.id.act_detail_purchase_place)
 	TextView textPlace;
+	@Bind(R.id.act_detail_purchase_total)
+	TextView textTotal;
 	@Bind(R.id.act_detail_purchase_items)
 	RecyclerView items;
 
@@ -73,11 +76,13 @@ public class DetailPurchaseActivity extends BaseActivity {
 		setStatic(textPlace, R.string.place, p != null ? p.getName() : getString(R.string.no_places));
 
 		adapter = new PurchasesItemAdapter();
-		adapter.loadData();
+		adapter.loadData(purchase);
 
 		items.setAdapter(adapter);
-		items.setLayoutManager(new LinearLayoutManager(this));
+		items.setLayoutManager(new GridLayoutManager(this, 2));
 		items.setItemAnimator(new DefaultItemAnimator());
+
+		updatedTotal();
 	}
 
 	private void setStatic(TextView tv, @StringRes int sttRes, String value) {
@@ -105,9 +110,22 @@ public class DetailPurchaseActivity extends BaseActivity {
 					if(itemId != 0) {
 						PurchaseItem item = PurchaseItem.find(itemId);
 						adapter.addItem(item);
+						updatedTotal();
 					}
 				}
 			}
 		}
+	}
+
+	private void updatedTotal() {
+		if(purchase == null)
+			return;
+		long amount = 0L;
+		for (PurchaseItem purchaseItem : PurchaseItem.purchaseItems(purchase.getId())) {
+			amount += purchaseItem.getTotal();
+		}
+
+		String s = NumberFormat.getCurrencyInstance(new Locale("pt", "BR")).format(amount / 100.0);
+		setStatic(textTotal, R.string.total, s);
 	}
 }

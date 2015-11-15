@@ -27,6 +27,12 @@
 			android:layout_height="wrap_content"
 			android:layout_margin="@dimen/min_spacing"/>
 
+		<TextView
+			android:id="@+id/act_detail_purchase_total"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/min_spacing"/>
+
 		<android.support.v7.widget.RecyclerView
 			android:id="@+id/act_detail_purchase_items"
 			android:layout_width="match_parent"

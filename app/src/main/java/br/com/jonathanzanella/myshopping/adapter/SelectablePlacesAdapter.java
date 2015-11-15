@@ -3,11 +3,9 @@ package br.com.jonathanzanella.myshopping.adapter;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import br.com.jonathanzanella.myshopping.R;
 import br.com.jonathanzanella.myshopping.models.Place;
-import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -20,9 +18,6 @@ public class SelectablePlacesAdapter extends PlacesAdapter {
 	public static class ViewHolder extends PlacesAdapter.ViewHolder implements View.OnClickListener {
 		SelectablePlacesAdapter adapter;
 
-		@Bind(R.id.row_place_name_stt)
-		TextView nameStt;
-
 		public ViewHolder(View itemView) {
 			super(itemView);
 
@@ -31,8 +26,8 @@ public class SelectablePlacesAdapter extends PlacesAdapter {
 		}
 
 		public void makeSelected(boolean b) {
-			int color = itemView.getResources().getColor(b ? R.color.colorPrimary : android.R.color.black);
-			nameStt.setTextColor(color);
+			int color = itemView.getResources().getColor(b ? R.color.colorSelected : android.R.color.white);
+			itemView.setBackgroundColor(color);
 		}
 
 		@Override

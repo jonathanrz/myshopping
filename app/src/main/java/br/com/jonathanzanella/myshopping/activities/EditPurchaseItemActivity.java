@@ -2,7 +2,7 @@ package br.com.jonathanzanella.myshopping.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +25,8 @@ public class EditPurchaseItemActivity extends BaseActivity {
 	public static final String KEY_PURCHASE_ID = "KeyPurchaseId";
 	public static final String KEY_PURCHASE_ITEM_ID = "KeyPurchaseItemId";
 	private static final String LOG_TAG = "EditPurchaseItemAct";
+	@Bind(R.id.act_edit_purchase_item_quantity)
+	EditText editQuantity;
 	@Bind(R.id.act_edit_purchase_item_amount)
 	EditText editAmount;
 	@Bind(R.id.act_edit_purchase_item_product)
@@ -38,6 +40,8 @@ public class EditPurchaseItemActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_edit_purchase_item);
+
+		setTitle(R.string.add_new_item);
 	}
 
 	@Override
@@ -67,7 +71,7 @@ public class EditPurchaseItemActivity extends BaseActivity {
 
 		productsAdapter = new SelectableProductsAdapter();
 		productsAdapter.loadData();
-		listProducts.setLayoutManager(new LinearLayoutManager(this));
+		listProducts.setLayoutManager(new GridLayoutManager(this, 2));
 		listProducts.setAdapter(productsAdapter);
 
 		currencyTextWatcher = new CurrencyTextWatcher(editAmount);
@@ -93,6 +97,7 @@ public class EditPurchaseItemActivity extends BaseActivity {
 	private void save() {
 		PurchaseItem item = new PurchaseItem();
 		item.setAmount(Long.parseLong(currencyTextWatcher.cleanString(editAmount.getText().toString())));
+		item.setQuantity(Double.parseDouble(editQuantity.getText().toString()));
 		item.setPurchaseId(purchase.getId());
 		Product p = productsAdapter.getSelectedProduct();
 		if(p != null)

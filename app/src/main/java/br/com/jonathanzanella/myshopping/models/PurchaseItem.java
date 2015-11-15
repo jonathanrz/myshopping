@@ -29,6 +29,8 @@ public class PurchaseItem extends BaseModel {
 	long productId;
 
 	@Column @Getter @Setter
+	double quantity;
+	@Column @Getter @Setter
 	long amount;
 
 	private static From<PurchaseItem> initQuery() {
@@ -39,8 +41,8 @@ public class PurchaseItem extends BaseModel {
 		return initQuery().where(Condition.column(PurchaseItem$Table.ID).eq(id)).querySingle();
 	}
 
-	public static List<PurchaseItem> all() {
-		return initQuery().queryList();
+	public static List<PurchaseItem> purchaseItems(long purchaseId) {
+		return initQuery().where(Condition.column(PurchaseItem$Table.PURCHASEID).eq(purchaseId)).queryList();
 	}
 
 	public Purchase getPurchase() {
@@ -49,5 +51,9 @@ public class PurchaseItem extends BaseModel {
 
 	public Product getProduct() {
 		return Product.find(productId);
+	}
+
+	public long getTotal() {
+		return (long) (amount * quantity);
 	}
 }
