@@ -28,6 +28,7 @@ dependencies {
 	def supportLibrary = '23.1.0'
 	compile "com.android.support:appcompat-v7:${supportLibrary}"
 	compile "com.android.support:design:${supportLibrary}"
+	compile "com.android.support:cardview-v7:${supportLibrary}"
 
 	//DBFlow
 	def dbFlow = '2.2.1'

@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/min_spacing"
-    android:layout_marginBottom="@dimen/min_spacing">
+<android.support.v7.widget.CardView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+	android:layout_margin="@dimen/default_spacing">
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="@string/date"
-        android:layout_marginLeft="@dimen/default_spacing"
-        android:layout_marginStart="@dimen/default_spacing"
-        android:layout_marginRight="@dimen/min_spacing"
-        android:layout_marginEnd="@dimen/min_spacing"/>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_margin="@dimen/min_spacing">
 
-    <TextView
-        android:id="@+id/row_purchase_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/default_spacing"
-        android:layout_marginEnd="@dimen/default_spacing"/>
+		<TextView
+			android:id="@+id/row_purchase_date_stt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/date"
+			android:layout_marginRight="@dimen/min_spacing"
+			android:layout_marginEnd="@dimen/min_spacing"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/place"
-        android:layout_marginRight="@dimen/min_spacing"
-        android:layout_marginEnd="@dimen/min_spacing"/>
+		<TextView
+			android:id="@+id/row_purchase_date"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/colorPrimary"
+			android:layout_toRightOf="@id/row_purchase_date_stt"
+			android:layout_toEndOf="@id/row_purchase_date_stt"/>
 
-    <TextView
-        android:id="@+id/row_purchase_place"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginRight="@dimen/default_spacing"
-        android:layout_marginEnd="@dimen/default_spacing"/>
+		<TextView
+			android:id="@+id/row_purchase_place_stt"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/place"
+			android:layout_below="@id/row_purchase_date_stt"
+			android:layout_marginRight="@dimen/min_spacing"
+			android:layout_marginEnd="@dimen/min_spacing"/>
 
-</LinearLayout>
+		<TextView
+			android:id="@+id/row_purchase_place"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/colorPrimary"
+			android:layout_below="@id/row_purchase_date_stt"
+			android:layout_toRightOf="@id/row_purchase_place_stt"
+			android:layout_toEndOf="@id/row_purchase_place_stt"/>
+
+	</RelativeLayout>
+</android.support.v7.widget.CardView>
